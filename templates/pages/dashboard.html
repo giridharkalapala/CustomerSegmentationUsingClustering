@@ -1,0 +1,142 @@
+{% extends "dashboard_base.html" %}
+{% block title %}Dashboard{% endblock %}
+
+{%block content %}
+
+<div class="dashboard-content">
+  <div class="welcome">
+    <h2>Welcome, {{ request.user.username }} 👋</h2>
+
+    <p>Customer Segmentation Dashboard</p>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-lg-3 col-md-6 mb-4">
+      <div class="dashboard-card blue">
+        <div>
+          <h3>2000</h3>
+
+          <p>Total Customers</p>
+        </div>
+
+        <i class="fa-solid fa-users"></i>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6 mb-4">
+      <div class="dashboard-card green">
+        <div>
+          <h3>₹75K</h3>
+
+          <p>Average Income</p>
+        </div>
+
+        <i class="fa-solid fa-wallet"></i>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6 mb-4">
+      <div class="dashboard-card orange">
+        <div>
+          <h3>68</h3>
+
+          <p>Spending Score</p>
+        </div>
+
+        <i class="fa-solid fa-cart-shopping"></i>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6 mb-4">
+      <div class="dashboard-card purple">
+        <div>
+          <h3>4</h3>
+
+          <p>Segments</p>
+        </div>
+
+        <i class="fa-solid fa-chart-pie"></i>
+      </div>
+    </div>
+  </div>
+  <!-- ========== -->
+  <div class="row mt-4">
+    <div class="col-lg-6">
+      <div class="chart-card">{{ income_chart|safe }}</div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="chart-card">{{ age_chart|safe }}</div>
+    </div>
+  </div>
+  <!-- === -->
+   <div class="table-card mt-4">
+
+    <h3 class="mb-4">
+        Customer Information
+    </h3>
+
+    <div class="table-responsive">
+
+        <table class="table table-hover">
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+
+                    <th>Gender</th>
+
+                    <th>Age</th>
+
+                    <th>Income</th>
+
+                    <th>Spending</th>
+
+                    <th>Cluster</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for customer in customers %}
+
+                <tr>
+
+                    <td>{{ customer.CustomerID }}</td>
+
+                    <td>{{ customer.Gender }}</td>
+
+                    <td>{{ customer.Age }}</td>
+
+                    <td>₹ {{ customer.Income }}</td>
+
+                    <td>{{ customer.Spending }}</td>
+
+                    <td>
+
+                        <span class="badge bg-primary">
+
+                            {{ customer.Cluster }}
+
+                        </span>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

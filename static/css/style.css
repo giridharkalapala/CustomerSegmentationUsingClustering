@@ -1,0 +1,110 @@
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+body{
+
+    font-family:'Inter',sans-serif;
+
+    background:#F8FAFC;
+
+    color:#334155;
+
+    overflow-x:hidden;
+
+}
+
+h1,h2,h3,h4,h5{
+
+    font-family:'Poppins',sans-serif;
+
+}
+
+a{
+
+    text-decoration:none;
+
+}
+
+section{
+
+    padding:100px 0;
+
+}
+/* navbar */
+.custom-navbar{
+
+    transition:.4s;
+
+    padding:18px 0;
+
+    background:rgba(255,255,255,.75);
+
+    backdrop-filter:blur(12px);
+
+}
+
+.navbar-brand{
+
+    font-size:28px;
+
+    color:var(--primary);
+
+}
+
+.nav-link{
+
+    margin:0 10px;
+
+    color:var(--dark);
+
+    font-weight:500;
+
+    transition:.3s;
+
+}
+
+.nav-link:hover{
+
+    color:var(--primary);
+
+}
+
+.btn-login{
+
+    border:2px solid var(--primary);
+
+    color:var(--primary);
+
+    border-radius:30px;
+
+    padding:10px 22px;
+
+}
+
+.btn-register{
+
+    background:linear-gradient(135deg,#2563EB,#4F46E5);
+
+    color:white;
+
+    border-radius:30px;
+
+    padding:10px 24px;
+
+}
+
+.btn-register:hover{
+
+    transform:translateY(-2px);
+
+    color:white;
+
+}
+/* navbar end */

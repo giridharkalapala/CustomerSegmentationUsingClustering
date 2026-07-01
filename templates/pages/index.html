@@ -1,0 +1,287 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Customer Segmentation
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <!-- Left Content -->
+
+            <div class="col-lg-6">
+
+                <span class="hero-tag">
+                    AI Powered Customer Analytics
+                </span>
+
+                <h1 class="hero-title mt-3">
+                    Customer Segmentation
+                    <span>Using Machine Learning</span>
+                </h1>
+
+                <p class="hero-description mt-4">
+                    Analyze customer purchasing behavior using K-Means Clustering,
+                    discover hidden customer groups, and help businesses improve
+                    marketing strategies through interactive analytics.
+                </p>
+
+                <div class="hero-buttons mt-4">
+
+                    <a href="#" class="btn btn-primary-custom">
+                        Get Started
+                    </a>
+
+                    <a href="#" class="btn btn-outline-custom">
+                        Live Demo
+                    </a>
+
+                </div>
+
+                <div class="hero-stats mt-5">
+
+                    <div class="stat-box">
+
+                        <h3>5000+</h3>
+
+                        <p>Customers</p>
+
+                    </div>
+
+                    <div class="stat-box">
+
+                        <h3>95%</h3>
+
+                        <p>Accuracy</p>
+
+                    </div>
+
+                    <div class="stat-box">
+
+                        <h3>4</h3>
+
+                        <p>Segments</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Right Content -->
+
+            <div class="col-lg-6 text-center">
+
+                <img
+                    src="{% static 'images/hero/dashboard.png' %}"
+                    class="hero-image img-fluid"
+                    alt="Dashboard">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- Trusted Companies -->
+
+<section class="trusted-section">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h5 class="trusted-title">
+                Inspired by Technologies Used by Leading Companies
+            </h5>
+
+        </div>
+
+        <div class="row text-center align-items-center">
+
+            <div class="col">
+                <img src="{% static 'images/logos/google.png' %}" class="company-logo" alt="Google">
+            </div>
+
+            <div class="col">
+                <img src="{% static 'images/logos/microsoft.png' %}" class="company-logo" alt="Microsoft">
+            </div>
+
+            <div class="col">
+                <img src="{% static 'images/logos/amazon.png' %}" class="company-logo" alt="Amazon">
+            </div>
+
+            <div class="col">
+                <img src="{% static 'images/logos/meta.png' %}" class="company-logo" alt="Meta">
+            </div>
+
+            <div class="col">
+                <img src="{% static 'images/logos/ibm.png' %}" class="company-logo" alt="IBM">
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Features Section -->
+ <section id="features" class="features-section">
+
+    <div class="container">
+
+        <div class="section-title text-center">
+
+            <h2>Powerful Features</h2>
+
+            <p>
+                Everything required to analyze customer behavior using Machine Learning.
+            </p>
+
+        </div>
+
+        <div class="row mt-5">
+
+            <div class="col-lg-4 mb-4">
+
+                <div class="feature-card">
+
+                    <i class="fas fa-database feature-icon"></i>
+
+                    <h4>Data Cleaning</h4>
+
+                    <p>
+                        Handle missing values, duplicate records, and prepare data for analysis.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-4 mb-4">
+
+                <div class="feature-card">
+
+                    <i class="fas fa-chart-line feature-icon"></i>
+
+                    <h4>Interactive Dashboard</h4>
+
+                    <p>
+                        Explore customer insights through interactive charts and KPIs.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-4 mb-4">
+
+                <div class="feature-card">
+
+                    <i class="fas fa-brain feature-icon"></i>
+
+                    <h4>K-Means Clustering</h4>
+
+                    <p>
+                        Automatically group customers into meaningful business segments.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- How It Works Section -->
+ <section class="workflow-section">
+
+    <div class="container">
+
+        <div class="section-title text-center">
+
+            <h2>How It Works</h2>
+
+            <p>
+                A simple workflow for customer segmentation.
+            </p>
+
+        </div>
+
+        <div class="row mt-5">
+
+            <div class="col-lg-3">
+
+                <div class="workflow-card">
+
+                    <h3>01</h3>
+
+                    <h5>Upload Dataset</h5>
+
+                    <p>Import customer information.</p>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3">
+
+                <div class="workflow-card">
+
+                    <h3>02</h3>
+
+                    <h5>Preprocess Data</h5>
+
+                    <p>Clean and prepare the dataset.</p>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3">
+
+                <div class="workflow-card">
+
+                    <h3>03</h3>
+
+                    <h5>Run Clustering</h5>
+
+                    <p>Apply Machine Learning algorithms.</p>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3">
+
+                <div class="workflow-card">
+
+                    <h3>04</h3>
+
+                    <h5>Analyze Results</h5>
+
+                    <p>Visualize customer segments.</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+{% endblock %}

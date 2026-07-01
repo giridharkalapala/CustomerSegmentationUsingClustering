@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-lg fixed-top custom-navbar">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold" href="/">
+            <i class="fa-solid fa-chart-line"></i>
+            CustomerSeg
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarMenu">
+
+            <ul class="navbar-nav mx-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="/">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#features">Features</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#dataset">Dataset</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+
+            </ul>
+
+            <div class="d-flex">
+
+                <a href="{% url 'login' %}" class="btn btn-login me-2">
+                    Login
+                </a>
+
+                <a href="{% url 'register' %}" class="btn btn-register">
+                    Register
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</nav>
