@@ -1,4 +1,4 @@
-{% extends "dashboard_base.html" %} {% block title %}Dashboard{% endblock %}
+{% extends "dashboard_base.html" %} {% load static %} {% block title %}Dashboard{% endblock %}
 {%block content %}
 
 <div class="dashboard-content">
@@ -8,6 +8,21 @@
     <p>Customer Segmentation Dashboard</p>
   </div>
   <!-- ==================================== -->
+   <div class="row mb-4">
+
+    <div class="col-md-4">
+
+        <input
+            type="text"
+            id="customerSearch"
+            class="form-control"
+            placeholder="Search Customer ID, Gender..."
+        >
+
+    </div>
+
+</div>
+   <!-- ================= -->
   <div class="filter-card">
     <form method="GET">
       <div class="row">
@@ -213,5 +228,5 @@
     </div>
   </div>
 </div>
-
+<script src="{% static 'js/dashboard.js' %}"></script>
 {% endblock %}
