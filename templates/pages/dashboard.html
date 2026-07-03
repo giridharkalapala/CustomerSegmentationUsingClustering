@@ -1,6 +1,4 @@
-{% extends "dashboard_base.html" %}
-{% block title %}Dashboard{% endblock %}
-
+{% extends "dashboard_base.html" %} {% block title %}Dashboard{% endblock %}
 {%block content %}
 
 <div class="dashboard-content">
@@ -9,12 +7,85 @@
 
     <p>Customer Segmentation Dashboard</p>
   </div>
+  <!-- ==================================== -->
+  <div class="filter-card">
+    <form method="GET">
+      <div class="row">
+        <div class="col-md-3">
+          <label class="form-label">Gender</label>
 
+          <select name="gender" class="form-select">
+            <option value="">All</option>
+
+            <option
+              value="Male"
+              {%
+              if
+              request.GET.gender=""
+              ="Male"
+              %}selected{%
+              endif
+              %}
+            >
+              Male
+            </option>
+
+            <option
+              value="Female"
+              {%
+              if
+              request.GET.gender=""
+              ="Female"
+              %}selected{%
+              endif
+              %}
+            >
+              Female
+            </option>
+          </select>
+        </div>
+
+        <div class="col-md-3">
+          <label class="form-label">Minimum Income</label>
+
+          <input
+            type="number"
+            name="income"
+            class="form-control"
+            value="{{ request.GET.income }}"
+            placeholder="e.g. 40"
+          />
+        </div>
+
+        <div class="col-md-3">
+          <label class="form-label">Minimum Spending</label>
+
+          <input
+            type="number"
+            name="spending"
+            class="form-control"
+            value="{{ request.GET.spending }}"
+            placeholder="e.g. 50"
+          />
+        </div>
+
+        <div class="col-md-3 d-flex align-items-end">
+          <button class="btn btn-primary w-100">Apply Filters</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <!-- ==================================== -->
+  {% if error %}
+
+  <div class="alert alert-warning">{{ error }}</div>
+
+  {% endif %}
   <div class="row mt-4">
     <div class="col-lg-3 col-md-6 mb-4">
       <div class="dashboard-card blue">
         <div>
-          <h3>2000</h3>
+          <h3>{{ total_customers }}</h3>
 
           <p>Total Customers</p>
         </div>
@@ -26,7 +97,7 @@
     <div class="col-lg-3 col-md-6 mb-4">
       <div class="dashboard-card green">
         <div>
-          <h3>₹75K</h3>
+          <h3>{{ average_income }} K$</h3>
 
           <p>Average Income</p>
         </div>
@@ -38,7 +109,7 @@
     <div class="col-lg-3 col-md-6 mb-4">
       <div class="dashboard-card orange">
         <div>
-          <h3>68</h3>
+          <h3>{{ average_spending }}</h3>
 
           <p>Spending Score</p>
         </div>
@@ -61,81 +132,85 @@
   </div>
   <!-- ========== -->
   <div class="row mt-4">
+    <div class="col-md-3">
+      <div class="card-box">
+        <h4>{{ rows }}</h4>
+        <p>Total Rows</p>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card-box">
+        <h4>{{ columns }}</h4>
+        <p>Total Columns</p>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card-box">
+        <h4>{{ missing_values }}</h4>
+        <p>Missing Values</p>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card-box">
+        <h4>{{ duplicate_records }}</h4>
+        <p>Duplicate Records</p>
+      </div>
+    </div>
+  </div>
+  <!-- ========== -->
+  <div class="row mt-4">
     <div class="col-lg-6">
       <div class="chart-card">{{ income_chart|safe }}</div>
     </div>
 
     <div class="col-lg-6">
-      <div class="chart-card">{{ age_chart|safe }}</div>
+      <div class="chart-card">{{ spending_chart|safe }}</div>
     </div>
   </div>
   <!-- === -->
-   <div class="table-card mt-4">
-
-    <h3 class="mb-4">
-        Customer Information
-    </h3>
+  <div class="table-card mt-4">
+    <h3 class="mb-4">Customer Information</h3>
 
     <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>ID</th>
 
-        <table class="table table-hover">
+            <th>Gender</th>
 
-            <thead>
+            <th>Age</th>
 
-                <tr>
+            <th>Income</th>
 
-                    <th>ID</th>
+            <th>Spending</th>
 
-                    <th>Gender</th>
+            <th>Cluster</th>
+          </tr>
+        </thead>
 
-                    <th>Age</th>
+        <tbody>
+          {% for customer in customers %}
 
-                    <th>Income</th>
+          <tr>
+            <td>{{ customer.CustomerID }}</td>
+            <td>{{ customer.Gender }}</td>
+            <td>{{ customer.Age }}</td>
+            <td>{{ customer.Annual_Income }}</td>
+            <td>{{ customer.Spending_Score }}</td>
 
-                    <th>Spending</th>
+            <td>
+              <span class="badge bg-primary"> {{ customer.Cluster }} </span>
+            </td>
+          </tr>
 
-                    <th>Cluster</th>
-
-                </tr>
-
-            </thead>
-
-            <tbody>
-
-                {% for customer in customers %}
-
-                <tr>
-
-                    <td>{{ customer.CustomerID }}</td>
-
-                    <td>{{ customer.Gender }}</td>
-
-                    <td>{{ customer.Age }}</td>
-
-                    <td>₹ {{ customer.Income }}</td>
-
-                    <td>{{ customer.Spending }}</td>
-
-                    <td>
-
-                        <span class="badge bg-primary">
-
-                            {{ customer.Cluster }}
-
-                        </span>
-
-                    </td>
-
-                </tr>
-
-                {% endfor %}
-
-            </tbody>
-
-        </table>
-
+          {% endfor %}
+        </tbody>
+      </table>
     </div>
-
   </div>
 </div>
 

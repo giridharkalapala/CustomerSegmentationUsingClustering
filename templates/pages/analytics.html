@@ -1,0 +1,49 @@
+{% extends "dashboard_base.html" %}
+
+{% block title %}Analytics{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-content">
+
+    <h2 class="mb-4">
+        Exploratory Data Analysis
+    </h2>
+
+    <div class="row">
+
+        <div class="col-lg-6">
+            <div class="chart-card">
+                {{ age_chart|safe }}
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="chart-card">
+                {{ gender_chart|safe }}
+            </div>
+        </div>
+
+        <div class="col-lg-6 mt-4">
+            <div class="chart-card">
+                {{ income_chart|safe }}
+            </div>
+        </div>
+
+        <div class="col-lg-6 mt-4">
+            <div class="chart-card">
+                {{ spending_chart|safe }}
+            </div>
+        </div>
+
+        <div class="col-lg-12 mt-4">
+            <div class="chart-card">
+                {{ scatter_chart|safe }}
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,10 +1,21 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
+
 import plotly.express as px
-from django.conf import settings
 import plotly.io as pio
-import pandas as pd
-import os
+
+from clustering.preprocessing import (
+    load_dataset,
+    dataset_summary,
+    dataset_health
+)
+
+from clustering.analytics import create_charts
+from clustering.kmeans import (
+    perform_clustering,
+    cluster_summary,
+    elbow_method
+)
 
 def index(request):
     return render(request, "pages/index.html")
@@ -13,59 +24,104 @@ def index(request):
 @login_required
 def dashboard(request):
 
-    # Dummy data (We'll replace this with CSV data later)
-    df = pd.DataFrame({
+    # Load dataset
+    df = load_dataset()
 
-        "CustomerID":[1001,1002,1003,1004,1005],
+    # -----------------------------
+    # Apply Filters
+    # -----------------------------
+    gender = request.GET.get("gender")
+    income = request.GET.get("income")
+    spending = request.GET.get("spending")
 
-        "Gender":[
-            "Male",
-            "Female",
-            "Female",
-            "Male",
-            "Female"
-        ],
+    if gender:
+        df = df[df["Gender"] == gender]
 
-        "Age":[22,31,28,40,35],
+    if income:
+        df = df[df["Annual_Income"] >= int(income)]
 
-        "Income":[40000,75000,52000,68000,90000],
+    if spending:
+        df = df[df["Spending_Score"] >= int(spending)]
 
-        "Spending":[65,89,52,70,95],
+    # -----------------------------
+    # Empty Dataset Check
+    # -----------------------------
+    if df.empty:
 
-        "Cluster":[
-            "Cluster 1",
-            "Cluster 2",
-            "Cluster 1",
-            "Cluster 3",
-            "Cluster 2"
-        ]
+        return render(
+            request,
+            "pages/dashboard.html",
+            {
+                "error": "No customers found for the selected filters.",
+                "customers": []
+            }
+        )
 
-    })
+    # -----------------------------
+    # Summary
+    # -----------------------------
+    summary = dataset_summary(df)
 
-    income_chart = px.bar(
-        df,
-        x="Income",
-        y="Spending",
-        title="Income vs Spending"
+    health = dataset_health(df)
+
+    # -----------------------------
+    # Clustering
+    # -----------------------------
+    clustered_df, cluster_chart = perform_clustering(df)
+
+    segment_summary = cluster_summary(clustered_df)
+
+    # -----------------------------
+    # Charts
+    # -----------------------------
+    income_chart = px.histogram(
+        clustered_df,
+        x="Annual_Income",
+        title="Annual Income Distribution",
+        color_discrete_sequence=["#2563EB"]
     )
 
-    age_chart = px.histogram(
-        df,
-        x="Age",
-        title="Age Distribution"
+    income_chart.update_layout(
+        template="plotly_white",
+        height=350
     )
 
+    spending_chart = px.histogram(
+        clustered_df,
+        x="Spending_Score",
+        title="Spending Score Distribution",
+        color_discrete_sequence=["#10B981"]
+    )
+
+    spending_chart.update_layout(
+        template="plotly_white",
+        height=350
+    )
+
+    # -----------------------------
+    # Context
+    # -----------------------------
     context = {
 
-        "income_chart":pio.to_html(
+        **summary,
+
+        **health,
+
+        "income_chart": pio.to_html(
             income_chart,
             full_html=False
         ),
 
-        "age_chart":pio.to_html(
-            age_chart,
+        "spending_chart": pio.to_html(
+            spending_chart,
             full_html=False
         ),
+
+        "cluster_chart": cluster_chart,
+
+        "customers": clustered_df.to_dict("records"),
+
+        "segments": segment_summary.to_dict("records"),
 
     }
 
@@ -73,4 +129,17 @@ def dashboard(request):
         request,
         "pages/dashboard.html",
         context
+    )
+
+@login_required
+def analytics(request):
+
+    df = load_dataset()
+
+    charts = create_charts(df)
+
+    return render(
+        request,
+        "pages/analytics.html",
+        charts
     )

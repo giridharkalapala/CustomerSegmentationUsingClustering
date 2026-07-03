@@ -1,0 +1,220 @@
+{% extends "dashboard_base.html" %}
+
+{% block title %}Clustering{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-content">
+
+    <h2 class="mb-4">
+        Customer Segmentation
+    </h2>
+
+    <!-- Cluster Scatter Plot -->
+    <div class="chart-card">
+
+        {{ cluster_chart|safe }}
+
+    </div>
+
+    <!-- Business Interpretation Cards -->
+    <div class="row mt-4">
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card-box">
+
+                <h5>🟢 VIP Customers</h5>
+
+                <p>
+                    High Income & High Spending.
+                    Reward with premium memberships and loyalty programs.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card-box">
+
+                <h5>🔵 Careful Customers</h5>
+
+                <p>
+                    High Income but Low Spending.
+                    Target them with exclusive offers and promotions.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card-box">
+
+                <h5>🟡 Potential Customers</h5>
+
+                <p>
+                    Lower Income but High Spending.
+                    Encourage repeat purchases through discounts.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card-box">
+
+                <h5>🔴 Budget Customers</h5>
+
+                <p>
+                    Low Income & Low Spending.
+                    Focus on affordable product recommendations.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card-box">
+
+                <h5>🟣 Average Customers</h5>
+
+                <p>
+                    Medium Income & Medium Spending.
+                    Keep them engaged with seasonal campaigns.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Segment Summary -->
+    <div class="table-card mt-4">
+
+        <h3 class="mb-3">
+            Customer Segment Summary
+        </h3>
+
+        <table class="table table-striped">
+
+            <thead>
+
+                <tr>
+
+                    <th>Segment</th>
+
+                    <th>Total Customers</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for item in segments %}
+
+                <tr>
+
+                    <td>{{ item.Segment }}</td>
+
+                    <td>{{ item.Customers }}</td>
+
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <!-- Customer Table -->
+    <div class="table-card mt-4">
+
+        <h3 class="mb-3">
+            Customer Details
+        </h3>
+
+        <table class="table table-hover">
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+
+                    <th>Gender</th>
+
+                    <th>Age</th>
+
+                    <th>Annual Income</th>
+
+                    <th>Spending Score</th>
+
+                    <th>Cluster</th>
+
+                    <th>Segment</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for customer in customers %}
+
+                <tr>
+
+                    <td>{{ customer.CustomerID }}</td>
+
+                    <td>{{ customer.Gender }}</td>
+
+                    <td>{{ customer.Age }}</td>
+
+                    <td>{{ customer.Annual_Income }}</td>
+
+                    <td>{{ customer.Spending_Score }}</td>
+
+                    <td>
+
+                        <span class="badge bg-primary">
+
+                            {{ customer.Cluster }}
+
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <span class="badge bg-success">
+
+                            {{ customer.Segment }}
+
+                        </span>
+
+                    </td>
+
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

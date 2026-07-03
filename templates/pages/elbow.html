@@ -1,0 +1,36 @@
+{% extends "dashboard_base.html" %}
+
+{% block title %}
+Elbow Method
+{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-content">
+
+    <h2 class="mb-4">
+
+        Elbow Method
+
+    </h2>
+
+    <div class="chart-card">
+
+        {{ elbow_chart|safe }}
+
+    </div>
+
+    <div class="alert alert-info mt-4">
+
+        <h5>Interpretation</h5>
+
+        <p>
+            The elbow point represents the optimal number of customer clusters.
+            For the Mall Customers dataset, the elbow is typically around <strong>K = 5</strong>.
+        </p>
+
+    </div>
+
+</div>
+
+{% endblock %}

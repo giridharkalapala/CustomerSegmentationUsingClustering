@@ -15,4 +15,11 @@ urlpatterns = [
         name="dashboard"
     ),
 
+    path(
+        "analytics/",
+        views.analytics,
+        name="analytics"
+    ),
+
+
 ]
