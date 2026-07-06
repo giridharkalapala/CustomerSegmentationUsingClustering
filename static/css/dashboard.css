@@ -8,56 +8,366 @@ body{
     background:#f5f7fb;
     font-family:Arial, sans-serif;
 }
+/* Loading Screen */
+#loader{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#ffffff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+/* Scroll to Top Button */
+#topBtn{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    width:50px;
+    height:50px;
+    border:none;
+    border-radius:50%;
+    background:#2563eb;
+    color:white;
+    display:none;
+    cursor:pointer;
+}
 
 .dashboard{
     display:flex;
 }
 
+
+/* ==========================================
+            PROFESSIONAL SIDEBAR
+========================================== */
+
 .sidebar{
-    width:250px;
-    background:#0F172A;
-    min-height:100vh;
-    color:#fff;
-    padding:20px;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 270px;
+    height: 100vh;
+
+    background: linear-gradient(180deg,#1e293b,#0f172a);
+
+    color: #fff;
+
+    display: flex;
+    flex-direction: column;
+
+    z-index: 999;
+
+    box-shadow: 8px 0 25px rgba(0,0,0,.18);
+
 }
 
+
+/* ==========================
+        LOGO
+========================== */
+
 .logo{
-    font-size:28px;
-    font-weight:bold;
-    margin-bottom:40px;
+
+    height:80px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:12px;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+    font-size:24px;
+
+    font-weight:700;
+
+    color:#fff;
+
+    flex-shrink:0;
+
 }
 
 .logo i{
-    color:#3B82F6;
+
+    font-size:30px;
+
+    color:#38bdf8;
+
 }
 
-.sidebar ul{
+
+/* ==========================
+      MENU TITLE
+========================== */
+
+.menu-title{
+
+    padding:22px 25px 12px;
+
+    font-size:12px;
+
+    letter-spacing:2px;
+
+    color:#94a3b8;
+
+    flex-shrink:0;
+
+}
+
+
+/* ==========================
+      MENU AREA
+========================== */
+
+.sidebar-menu{
+
     list-style:none;
-    padding:0;
+
+    margin:0;
+
+    padding:0 15px;
+
+    flex:1;
+
+    overflow-y:auto;
+
 }
 
-.sidebar li{
-    margin-bottom:10px;
+/* Custom Scrollbar */
+
+.sidebar-menu::-webkit-scrollbar{
+
+    width:6px;
+
 }
 
-.sidebar a{
-    display:block;
-    color:#fff;
-    text-decoration:none;
-    padding:12px;
+.sidebar-menu::-webkit-scrollbar-thumb{
+
+    background:#475569;
+
     border-radius:10px;
-    transition:.3s;
+
 }
 
-.sidebar a:hover,
-.sidebar .active a{
-    background:#2563EB;
+.sidebar-menu li{
+
+    margin-bottom:8px;
+
 }
+
+
+/* ==========================
+        MENU LINKS
+========================== */
+
+.sidebar-menu li a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    padding:14px 18px;
+
+    border-radius:14px;
+
+    text-decoration:none;
+
+    color:#cbd5e1;
+
+    transition:.35s ease;
+
+    font-weight:500;
+
+}
+
+.sidebar-menu li a i{
+
+    width:22px;
+
+    text-align:center;
+
+    font-size:18px;
+
+}
+
+
+/* Hover */
+
+.sidebar-menu li a:hover{
+
+    background:linear-gradient(135deg,#2563eb,#3b82f6);
+
+    color:#fff;
+
+    transform:translateX(6px);
+
+}
+
+
+/* Active */
+
+.sidebar-menu li.active a{
+
+    background:linear-gradient(135deg,#2563eb,#06b6d4);
+
+    color:#fff;
+
+    box-shadow:0 10px 25px rgba(37,99,235,.35);
+
+}
+
+
+/* ==========================
+        FOOTER
+========================== */
+
+.sidebar-footer{
+
+    padding:20px 15px;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    flex-shrink:0;
+
+}
+
+.sidebar-footer a{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:12px;
+
+    width:100%;
+
+    padding:15px;
+
+    border-radius:14px;
+
+    text-decoration:none;
+
+    color:#fff;
+
+    font-weight:600;
+
+    background:linear-gradient(135deg,#ef4444,#dc2626);
+
+    transition:.35s ease;
+
+}
+
+.sidebar-footer a:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 15px 30px rgba(220,38,38,.35);
+
+}
+
+
+/* ==========================
+      MAIN CONTENT
+========================== */
 
 .main-content{
+     
+    margin-left:270px;
     flex:1;
+
 }
 
+/* =============Welcome Banner========== */
+.welcome-banner{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:linear-gradient(135deg,#2563eb,#06b6d4);
+
+    color:#fff;
+
+    padding:30px;
+
+    border-radius:20px;
+
+    margin-bottom:30px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.15);
+
+}
+
+.live-time{
+
+    font-size:22px;
+
+    font-weight:700;
+
+}
+
+
+/* ==========================
+      RESPONSIVE
+========================== */
+
+@media(max-width:991px){
+
+    .sidebar{
+
+        width:240px;
+
+    }
+
+    .main-content{
+
+        margin-left:240px;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .sidebar{
+
+        transform:translateX(-100%);
+
+        transition:.4s;
+
+    }
+
+    .sidebar.active{
+
+        transform:translateX(0);
+
+    }
+
+    .main-content{
+
+        margin-left:0;
+
+        padding:20px;
+
+    }
+
+}
+/* ======================================= */
 .topbar{
     background:#fff;
     height:70px;
@@ -129,9 +439,9 @@ body{
 
     color:white;
 
-    border-radius:18px;
+    border-radius:15px;
 
-    padding:25px;
+    padding:20px;
 
     display:flex;
 
@@ -169,7 +479,7 @@ body{
 
 .dashboard-card i{
 
-    font-size:45px;
+    font-size:35px;
 
 }
 
@@ -276,4 +586,510 @@ body{
 
     box-shadow:0 15px 35px rgba(0,0,0,.15);
 
+}
+
+/* ==========================
+   Export Buttons
+========================== */
+
+.export-section{
+    display:flex;
+    gap:15px;
+    /* flex-wrap:wrap;
+    margin:30px 0; */
+}
+
+.export-btn{
+    min-width:213px;
+    padding:10px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    border-radius:15px;
+    color:#fff;
+    text-decoration:none;
+    font-size:17px;
+    font-weight:600;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+    transition:.35s ease;
+    position:relative;
+    overflow:hidden;
+}
+
+.export-btn::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-120%;
+    width:80%;
+    height:100%;
+    background:rgba(255,255,255,.25);
+    transform:skewX(-25deg);
+    transition:.7s;
+}
+
+.export-btn:hover::before{
+    left:130%;
+}
+
+.export-btn:hover{
+    transform:translateY(-8px);
+    color:#fff;
+    box-shadow:0 18px 40px rgba(0,0,0,.25);
+}
+
+.export-btn i{
+    font-size:28px;
+}
+
+.csv-btn{
+    background:linear-gradient(135deg,#00c853,#43e97b);
+}
+
+.excel-btn{
+    background:linear-gradient(135deg,#11998e,#38ef7d);
+}
+
+.pdf-btn{
+    background:linear-gradient(135deg,#ff416c,#ff4b2b);
+}
+/* ================== */
+.upload-card{
+
+    max-width:700px;
+
+    margin:auto;
+
+    background:#fff;
+
+    padding:40px;
+
+    border-radius:20px;
+
+    box-shadow:0 10px 35px rgba(0,0,0,.12);
+
+}
+
+.btn-upload{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:12px;
+
+    color:#fff;
+
+    font-size:18px;
+
+    background:linear-gradient(135deg,#4F46E5,#06B6D4);
+
+}
+/* ======================================================================================= */
+/*==========================
+      CUSTOMER PAGE
+==========================*/
+
+.customer-card{
+
+background:#fff;
+
+border-radius:20px;
+
+padding:30px;
+
+box-shadow:0 12px 30px rgba(0,0,0,.08);
+
+transition:.4s;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.customer-card::before{
+
+content:"";
+
+position:absolute;
+
+width:100px;
+
+height:100px;
+
+background:rgba(37,99,235,.08);
+
+border-radius:50%;
+
+top:-30px;
+
+right:-30px;
+
+}
+
+.customer-card:hover{
+
+transform:translateY(-10px);
+
+}
+
+.customer-card h6{
+
+    color:#64748b;
+
+}
+
+.customer-card h2{
+
+    margin-top:10px;
+
+    font-size:34px;
+
+    font-weight:700;
+
+}
+
+.male{
+
+    border-left:6px solid #2563eb;
+
+}
+
+.female{
+
+    border-left:6px solid #ec4899;
+
+}
+
+.vip{
+
+    border-left:6px solid #f59e0b;
+
+}
+
+.table-card{
+
+    background:#fff;
+
+    padding:25px;
+
+    border-radius:18px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+/* filter=== */
+.filter-bar{
+
+background:#fff;
+
+padding:25px;
+
+border-radius:18px;
+
+margin-bottom:30px;
+
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+/* ============================================ */
+/* ============================================ */
+.customer-table{
+
+background:#fff;
+
+border-radius:20px;
+
+overflow:hidden;
+
+}
+
+.customer-info{
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
+}
+
+.avatar{
+
+width:55px;
+
+height:55px;
+
+border-radius:50%;
+
+}
+
+.membership{
+
+padding:8px 14px;
+
+border-radius:20px;
+
+font-size:13px;
+
+font-weight:600;
+
+color:#fff;
+
+}
+
+.silver{
+
+background:#94a3b8;
+
+}
+
+.gold{
+
+background:#f59e0b;
+
+}
+
+.platinum{
+
+background:#6366f1;
+
+}
+
+.vip{
+
+background:#dc2626;
+
+}
+
+.status{
+
+font-weight:600;
+
+}
+
+.active-status{
+
+color:#16a34a;
+
+}
+
+.inactive-status{
+
+color:#dc2626;
+
+}
+
+.customer-table tbody tr{
+
+transition:.3s;
+
+}
+
+.customer-table tbody tr:hover{
+
+background:#eff6ff;
+
+transform:scale(1.005);
+
+}
+
+.dropdown button{
+
+border:none;
+
+box-shadow:none;
+
+}
+/* ==  = = = = = = = = = = = =  */
+.stats-card{
+
+background:linear-gradient(135deg,#2563eb,#06b6d4);
+
+color:#fff;
+
+padding:15px;
+
+border-radius:15px;
+
+text-align:center;
+
+transition:.3s;
+
+}
+
+.stats-card:hover{
+
+transform:translateY(-8px);
+
+}
+
+.stats-card i{
+
+font-size:35px;
+
+margin-bottom:15px;
+
+}
+
+.stats-card h4{
+
+font-size:34px;
+
+font-weight:700;
+
+}
+
+/* ======================================================================================= */
+/* ==========================
+        REPORTS PAGE
+========================== */
+
+.report-card{
+
+    background:#fff;
+
+    border-radius:24px;
+
+    padding:35px;
+
+    text-align:center;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+}
+
+.report-card:hover{
+
+    transform:translateY(-10px);
+
+}
+
+.report-card i{
+
+    font-size:60px;
+
+    margin-bottom:20px;
+
+}
+
+.csv i{
+
+    color:#22c55e;
+
+}
+
+.excel i{
+
+    color:#16a34a;
+
+}
+
+.pdf i{
+
+    color:#ef4444;
+
+}
+
+.report-btn{
+
+    display:inline-block;
+
+    margin-top:20px;
+
+    padding:12px 28px;
+
+    border-radius:12px;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    background:linear-gradient(135deg,#2563eb,#06b6d4);
+
+}
+
+.stats-box{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    text-align:center;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.stats-box h3{
+
+    font-size:36px;
+
+    color:#2563eb;
+
+    margin-bottom:10px;
+
+}
+/* ============================================================================================= */
+/* ==========================
+        SETTINGS PAGE
+========================== */
+
+.settings-card{
+
+    background:#fff;
+
+    border-radius:20px;
+
+    padding:30px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+    height:100%;
+
+}
+
+.settings-card:hover{
+
+    transform:translateY(-6px);
+
+}
+
+.settings-card h4{
+
+    margin-bottom:20px;
+
+    color:#2563eb;
+
+}
+
+.settings-card i{
+
+    margin-right:10px;
+
+}
+
+.settings-card p{
+
+    margin-bottom:15px;
+
+    color:#475569;
+
+}
+/* ========== footer ========== */
+.footer{
+    text-align:center;
+    padding:20px;
+    color:#666;
 }

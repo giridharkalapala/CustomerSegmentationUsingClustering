@@ -1,65 +1,81 @@
 <div class="sidebar">
-  <div class="logo">
-    <i class="fa-solid fa-chart-line"></i>
 
-    <span>CustomerSeg</span>
-  </div>
+    <div class="logo">
+        <i class="fa-solid fa-chart-pie"></i>
+        <span>CustomerSeg</span>
+    </div>
 
-  <ul>
-    <li class="active">
-      <a href="{% url 'dashboard' %}">
-        <i class="fa-solid fa-house"></i>
-        Dashboard
-      </a>
-    </li>
+    <div class="menu-title">
+        MAIN MENU
+    </div>
 
-    <li>
-      <a href="#">
-        <i class="fa-solid fa-users"></i>
-        Customers
-      </a>
-    </li>
+    <ul class="sidebar-menu">
 
-    <li>
-      <a href="{% url 'analytics' %}">
-        <i class="fa-solid fa-chart-column"></i>
-        Analytics
-      </a>
-    </li>
+        <li class="{% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">
+            <a href="{% url 'dashboard' %}">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
 
-    <li>
-      <a href="{% url 'clustering' %}">
-        <i class="fa-solid fa-brain"></i>
-        Clustering
-      </a>
-    </li>
-    
-    <li>
-      <a href="{% url 'elbow' %}">
-        <i class="fa-solid fa-chart-line"></i>
-        Elbow Method
-      </a>
-    </li>
+        <li class="{% if request.resolver_match.url_name == 'upload_dataset' %}active{% endif %}">
+            <a href="{% url 'upload_dataset' %}">
+                <i class="fa-solid fa-upload"></i>
+                <span>Upload Dataset</span>
+            </a>
+        </li>
 
-    <li>
-      <a href="#">
-        <i class="fa-solid fa-file-lines"></i>
-        Reports
-      </a>
-    </li>
+        <li>
+            <a href="{% url 'customers' %}"">
+                <i class="fa-solid fa-users"></i>
+                <span>Customers</span>
+            </a>
+        </li>
 
-    <li>
-      <a href="#">
-        <i class="fa-solid fa-gear"></i>
-        Settings
-      </a>
-    </li>
+        <li class="{% if request.resolver_match.url_name == 'analytics' %}active{% endif %}">
+            <a href="{% url 'analytics' %}">
+                <i class="fa-solid fa-chart-column"></i>
+                <span>Analytics</span>
+            </a>
+        </li>
 
-    <li>
-      <a href="{% url 'logout' %}">
-        <i class="fa-solid fa-right-from-bracket"></i>
-        Logout
-      </a>
-    </li>
-  </ul>
+        <li class="{% if request.resolver_match.url_name == 'clustering' %}active{% endif %}">
+            <a href="{% url 'clustering' %}">
+                <i class="fa-solid fa-brain"></i>
+                <span>Clustering</span>
+            </a>
+        </li>
+
+        <li class="{% if request.resolver_match.url_name == 'elbow' %}active{% endif %}">
+            <a href="{% url 'elbow' %}">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Elbow Method</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'reports' %}">
+                <i class="fa-solid fa-file-arrow-down"></i>
+                <span>Reports</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'settings' %}">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+            </a>
+        </li>
+
+    </ul>
+
+    <div class="sidebar-footer">
+
+        <a href="{% url 'logout' %}">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Logout
+        </a>
+
+    </div>
+
 </div>

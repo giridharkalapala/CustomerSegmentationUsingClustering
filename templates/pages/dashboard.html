@@ -1,28 +1,62 @@
-{% extends "dashboard_base.html" %} {% load static %} {% block title %}Dashboard{% endblock %}
+{% extends "dashboard_base.html" %}
+{% load static %}
+{% block title %}Dashboard{% endblock %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
 {%block content %}
 
 <div class="dashboard-content">
-  <div class="welcome">
-    <h2>Welcome, {{ request.user.username }} 👋</h2>
+  <div class="welcome-banner">
 
-    <p>Customer Segmentation Dashboard</p>
-  </div>
-  <!-- ==================================== -->
-   <div class="row mb-4">
+    <div>
 
-    <div class="col-md-4">
+        <h2>
+            Welcome,
+            {{ request.user.username }} 👋
+        </h2>
 
-        <input
-            type="text"
-            id="customerSearch"
-            class="form-control"
-            placeholder="Search Customer ID, Gender..."
-        >
+        <p>
+            Customer Segmentation  Dashboard
+        </p>
+
+    </div>
+
+    <div class="live-time">
+
+        <h4 id="clock"></h4>
 
     </div>
 
 </div>
-   <!-- ================= -->
+  <!-- ==================================== -->
+  <div class="row mb-4">
+    <div class="col-md-4">
+      <input
+        type="text"
+        id="customerSearch"
+        class="form-control"
+        placeholder="Search Customer ID, Gender..."
+      />
+    </div>
+    <div class="col-md-6 export-section">
+
+    <a href="{% url 'download_csv' %}" class="export-btn csv-btn">
+        <i class="fa-solid fa-file-csv"></i>
+        <span>Export CSV</span>
+    </a>
+
+    <a href="{% url 'download_excel' %}" class="export-btn excel-btn">
+        <i class="fa-solid fa-file-excel"></i>
+        <span>Export Excel</span>
+    </a>
+
+    <a href="{% url 'download_pdf' %}" class="export-btn pdf-btn">
+        <i class="fa-solid fa-file-pdf"></i>
+        <span>Export PDF</span>
+    </a>
+
+</div>
+  </div>
+  <!-- ================= -->
   <div class="filter-card">
     <form method="GET">
       <div class="row">
@@ -227,6 +261,9 @@
       </table>
     </div>
   </div>
+  <!-- ============= -->
+
+  <!-- ============= -->
 </div>
 <script src="{% static 'js/dashboard.js' %}"></script>
 {% endblock %}

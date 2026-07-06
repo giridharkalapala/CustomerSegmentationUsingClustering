@@ -1,0 +1,40 @@
+{% extends "dashboard_base.html" %}
+{% load static %}
+
+{% block title %}Upload Dataset{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="upload-card">
+
+        <h2>Upload Customer Dataset</h2>
+
+        <p>Select a CSV file to analyze customer segments.</p>
+
+        <form method="POST" enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            <input
+                type="file"
+                name="dataset"
+                accept=".csv"
+                class="form-control mb-4"
+                required
+            >
+
+            <button class="btn-upload">
+
+                Upload Dataset
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

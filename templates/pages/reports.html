@@ -1,0 +1,145 @@
+{% extends "dashboard_base.html" %}
+{% load static %}
+
+{% block title %}Reports{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <div class="page-header mb-5 mt-3">
+
+        <h2>Reports Center</h2>
+
+        <p>
+            Generate and download customer analytics reports.
+        </p>
+
+    </div>
+
+    <!-- Download Cards -->
+
+    <div class="row g-4">
+
+        <div class="col-lg-4">
+
+            <div class="report-card csv">
+
+                <i class="fa-solid fa-file-csv"></i>
+
+                <h4>CSV Report</h4>
+
+                <p>Download customer dataset.</p>
+
+                <a href="{% url 'download_csv' %}"
+                   class="report-btn">
+
+                    Download
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-4">
+
+            <div class="report-card excel">
+
+                <i class="fa-solid fa-file-excel"></i>
+
+                <h4>Excel Report</h4>
+
+                <p>Download Excel report.</p>
+
+                <a href="{% url 'download_excel' %}"
+                   class="report-btn">
+
+                    Download
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-4">
+
+            <div class="report-card pdf">
+
+                <i class="fa-solid fa-file-pdf"></i>
+
+                <h4>PDF Report</h4>
+
+                <p>Printable analytics report.</p>
+
+                <a href="{% url 'download_pdf' %}"
+                   class="report-btn">
+
+                    Download
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Statistics -->
+
+    <div class="row mt-5 mb-4 g-4">
+
+        <div class="col-md-3">
+
+            <div class="stats-box">
+
+                <h3>{{ total_customers }}</h3>
+
+                <span>Total Customers</span>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="stats-box">
+
+                <h3>{{ average_income }}</h3>
+
+                <span>Average Income</span>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="stats-box">
+
+                <h3>{{ average_spending }}</h3>
+
+                <span>Average Spending</span>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="stats-box">
+
+                <h3>{{ segments }}</h3>
+
+                <span>Total Segments</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
