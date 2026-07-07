@@ -11,7 +11,7 @@ kiwisolver==1.5.0
 matplotlib==3.11.0
 narwhals==2.22.1
 numpy==2.5.0
-openpyxl==3.1.5pip install openpyxl reportlab
+openpyxl==3.1.5 #pip install openpyxl reportlab
 packaging==26.2
 pandas==3.0.4
 pillow==12.2.0
