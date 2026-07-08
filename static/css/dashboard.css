@@ -453,6 +453,8 @@ body{
 
     box-shadow:0 10px 25px rgba(0,0,0,.08);
 
+    background: linear-gradient(135deg, #2563eb, #06b6d4);
+
 }
 
 .dashboard-card:hover{
@@ -483,9 +485,9 @@ body{
 
 }
 
-.blue{
+/* .blue{
 
-    background:linear-gradient(135deg,#2563EB,#3B82F6);
+        background: linear-gradient(135deg, #2563eb, #06b6d4);
 
 }
 
@@ -505,7 +507,7 @@ body{
 
     background:linear-gradient(135deg,#7C3AED,#A855F7);
 
-}
+} */
 
 /* ========== */
 .chart-card{
@@ -861,11 +863,11 @@ background:#6366f1;
 
 }
 
-.vip{
+/* .vip{
 
 background:#dc2626;
 
-}
+} */
 
 .status{
 
